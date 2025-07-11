@@ -210,7 +210,8 @@ impl<'info> Close<'info> {
         ];
         let seeds = &[&pda_signing_seeds[..]];
         let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_account, seeds);
-        transfer(cpi_ctx, self.vault.lamports())
+        transfer(cpi_ctx, self.vault.lamports())?;
+        Ok(())
     }
 }
 
